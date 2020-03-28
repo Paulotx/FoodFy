@@ -1,0 +1,206 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap";
+* {
+    margin : 0;
+    padding: 0;
+    border : 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto;
+}
+
+/*** HEADER ***/
+header {
+    width: 940px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 30px 0;
+}
+
+header .menu a {
+    font-size: 16px;
+    line-height: 19px;
+    color: #111;
+    text-decoration: none;
+    margin-right: 30px;
+    vertical-align: middle;
+}
+
+/*** INTRODUCTION ***/
+#introduction {
+    margin: 0 auto;
+    width: 940px;
+    padding: 120px 60px;
+    background-color: #FBDFDB;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+}
+
+#introduction img {
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+}
+
+#description {
+    max-width: 320px;
+}
+
+#description h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #111;    
+}
+
+#description p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #000;
+    margin-top: 10px;
+}
+
+/*** MOST VIEWED ***/
+#most-viewed {
+    width: 940px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+#most-viewed h1 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.videos .video {
+    width: 300px;
+    cursor: pointer;
+}
+
+.videos .video img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.videos .video h3 {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 21px;
+    color: #111;
+    margin: 10px 0 5px 0;
+}
+
+.videos .video p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/*** FOOTER ***/
+footer {
+    width: 100%;
+    height: 62px;
+    background-color: #EEE;
+    text-align: center;
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #999;
+    padding: 23px 0;
+}
+
+/*** ABOUT ***/
+#about {
+    width: 940px;
+    margin: 20px auto;
+}
+
+#about h1 {
+    font-size: 24px;
+    line-height: 28px;
+    color: #111;
+    font-weight: bold;
+}
+
+#about h3 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #111;
+    margin-top: 30px;
+}
+
+#about p {
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 20px;
+}
+
+/*** MODAL ***/
+.modal-overlay {
+    background-color: rgba(0,0,0,0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    background-color: #FFF;
+    width: 660px;
+    margin: 5vh auto;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+}
+
+.modal-overlay .modal-content {
+    width: 600px;
+}
+
+.modal-overlay .modal-content img {
+    width: 100%;
+    height: 200px;
+}
+
+.modal-overlay .modal-content h3 {
+    color: #111;
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+.modal-overlay .modal-content p {
+    color: #777;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.modal-overlay .close-modal p {
+    font-size: 14px;
+    color: #999;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+/*=== MODAL.ACTIVE ===*/
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
