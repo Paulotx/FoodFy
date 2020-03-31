@@ -11,12 +11,12 @@
     </section>
 
     <section id="most-viewed">
-        <h1>Mais acessadas</h1>
+        <h1>Novas Receitas</h1>
 
-        <div class="videos">
+        <div class="receitas">
             {% for item in items %}
                 {% if item.id > loop.length - 6 %}
-                <div class="video">
+                <div class="receita">
                     <img src="{{ item.image }}" alt="Imagem de {{ item.title }}" class="burguer">
                     <h3>{{ item.title }}</h3>
                     <p>{{ item.author }}</p>

@@ -78,23 +78,23 @@ header .menu a {
     margin-bottom: 20px;
 }
 
-.videos {
+.receitas {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
 }
 
-.videos .video {
+.receitas .receita {
     width: 300px;
     cursor: pointer;
 }
 
-.videos .video img {
+.receitas .receita img {
     width: 100%;
     border-radius: 15px;
 }
 
-.videos .video h3 {
+.receitas .receita h3 {
     font-size: 18px;
     font-weight: normal;
     line-height: 21px;
@@ -102,7 +102,7 @@ header .menu a {
     margin: 10px 0 5px 0;
 }
 
-.videos .video p {
+.receitas .receita p {
     font-size: 14px;
     line-height: 16px;
     color: #777;
@@ -203,4 +203,87 @@ footer p {
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+/*=== RECEITAS ===*/
+#receita-container {
+    width: 940px;
+    margin: 0 auto;
+    padding: 26px 0 50px 0;
+}
+
+.receita-viewed {
+    width: 940px;   
+    text-align: center;
+    padding: 0 0 50px 0;
+}
+
+.receita-viewed img {
+    width: 100%;
+    height: 280px;
+    border-radius: 15px;
+}
+
+.receita-viewed h1 {
+    font-size: 36px;
+    line-height: 42px;
+    color: #111;
+    margin-top: 50px;
+}
+
+.receita-viewed p {
+    font-size: 20px;
+    line-height: 24px;
+    color: #777;
+    margin-top: 4px;
+}
+
+.title {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.ingredients .ingredients-list, .preparation p, .information p {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.ingredients .ingredients-list.active, .preparation p.active, .information p.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+.ingredients, .preparation {
+    margin-bottom: 50px;
+}
+
+.ingredients h2, .preparation h2, .information h2 {
+    font-size: 24px;
+    line-height: 28px;
+    color: #111;    
+}
+
+.ingredients ul li {
+    font-size: 18px;
+    line-height: 28px;
+    margin-left: 20px;
+    color: #444;
+}
+
+.preparation p, .information p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.hide-show {
+    font-size: 12px;
+    line-height: 14px;
+    color: #999;
+    margin-left: 15px;
+    cursor: pointer;
 }
