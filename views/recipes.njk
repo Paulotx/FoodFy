@@ -8,9 +8,9 @@
     <section id="most-viewed">
         <h1>Mais acessadas</h1>
 
-        <div class="receitas">
+        <div class="recipes">
             {% for item in items %}
-                <div class="receita" id="{{ item.id }}">
+                <div class="recipe">
                     <img src="{{ item.image }}" alt="Imagem de {{ item.title }}" class="burguer">
                     <h3>{{ item.title }}</h3>
                     <p>{{ item.author }}</p>
@@ -32,6 +32,4 @@
             </div>
         </div>
     </div> #}
-
-    <script src="scripts.js"></script>
 {% endblock %}

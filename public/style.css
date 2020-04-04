@@ -78,23 +78,23 @@ header .menu a {
     margin-bottom: 20px;
 }
 
-.receitas {
+.recipes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
 }
 
-.receitas .receita {
+.recipes .recipe {
     width: 300px;
     cursor: pointer;
 }
 
-.receitas .receita img {
+.recipes .recipe img {
     width: 100%;
     border-radius: 15px;
 }
 
-.receitas .receita h3 {
+.recipes .recipe h3 {
     font-size: 18px;
     font-weight: normal;
     line-height: 21px;
@@ -102,7 +102,7 @@ header .menu a {
     margin: 10px 0 5px 0;
 }
 
-.receitas .receita p {
+.recipes .recipe p {
     font-size: 14px;
     line-height: 16px;
     color: #777;
@@ -206,32 +206,32 @@ footer p {
 }
 
 /*=== RECEITAS ===*/
-#receita-container {
+#recipe-container {
     width: 940px;
     margin: 0 auto;
     padding: 26px 0 50px 0;
 }
 
-.receita-viewed {
+.recipe-viewed {
     width: 940px;   
     text-align: center;
     padding: 0 0 50px 0;
 }
 
-.receita-viewed img {
+.recipe-viewed img {
     width: 100%;
     height: 280px;
     border-radius: 15px;
 }
 
-.receita-viewed h1 {
+.recipe-viewed h1 {
     font-size: 36px;
     line-height: 42px;
     color: #111;
     margin-top: 50px;
 }
 
-.receita-viewed p {
+.recipe-viewed p {
     font-size: 20px;
     line-height: 24px;
     color: #777;

@@ -21,12 +21,12 @@
 
 
 const modalOverlay = document.querySelector('.modal-overlay');
-const receitas     = document.querySelectorAll('.receita');
+const recipes     = document.querySelectorAll('.recipe');
 
-for (let receita of receitas) {
-    receita.addEventListener('click', function() {
-        const receitaID = receita.getAttribute("id");
-        window.location.href = `/receita?id=${ receitaID }`;
+for(let i = 0; i < recipes.length; i++) {
+    recipes[i].addEventListener('click', function() {
+        const recipeID = i;
+        window.location.href = `/recipes/${ recipeID }`;
     });
 }
 
