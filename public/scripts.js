@@ -7,7 +7,7 @@ for(let i = 0; i < recipes_admin.length; i++) {
     });
 }
 
-const recipes     = document.querySelectorAll('.recipe');
+const recipes = document.querySelectorAll('.recipe');
 
 console.log(recipes);
 

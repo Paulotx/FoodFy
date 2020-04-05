@@ -12,16 +12,21 @@ exports.index = function(req, res) {
 exports.show = function(req, res) {
     const index = req.params.index;
 
-    const recipe = recipes[index];
+    let recipe = recipes[index];
+
+    recipe = {
+        index,
+        ...recipe
+    }
 
     if(!recipe) {
         return res.send("Receita não encontrada!");
     }
 
-    if(req.route.path == '/recipes/:index')
+    if(req.route.path == "/recipes/:index")
         return res.render("user/recipe", { item: recipe });
 
-        return res.render('admin/recipe', { item: recipe });
+        return res.render("admin/recipe", { item: recipe });
 }
 
 // create
@@ -31,7 +36,15 @@ exports.create = function(req, res) {
 
 // edit
 exports.edit = function(req, res) {
-    return res.send("Edit!");
+    const index = req.params.index;
+
+    const recipe = recipes[index];
+
+    if(!recipe) {
+        return res.send("Receita não encontrada!");
+    }
+
+    return res.render("admin/edit", { item: recipe });
 }
 
 // post

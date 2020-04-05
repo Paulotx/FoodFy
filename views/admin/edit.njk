@@ -1,0 +1,92 @@
+{% extends "layout-admin.njk" %}
+
+{% block head %}
+    <title>Editando Receita - Foodfy</title>
+{% endblock %}
+
+{% block content %}
+    <section class="edit-container">
+        <div class="header-edit">
+            <span>Editando Receitas</span>
+            <div>
+                <a href="#" class="button">Deletar receita</a>
+                <a href="#" class="button">Salvar receira</a>
+            </div>
+        </div>
+
+        <form>
+            <div class="item">
+                <div>Titulo da receita</div>
+                <div>
+                    <input 
+                        type="url"
+                        name="title"
+                        value="{{ item.title }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Autor da receita</div>
+                <div>
+                    <input 
+                        type="url"
+                        name="author"
+                        value="{{ item.author }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Imagem da receita</div>
+                <div>
+                    <input 
+                        type="url"
+                        name="image_url"
+                        value="{{ item.image }}"
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Ingredientes</div>
+                <div>
+                    {% for ingredient in item.ingredients %}
+                        <input 
+                            type="text"
+                            name="ingredients[]"
+                            value="{{ ingredient }}"
+                        >
+                    {% endfor %}
+                    <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+                    <button type="button" class="remove-ingredient">Remover ingrediente</button>
+                </div>                
+            </div>
+
+            <div class="item">
+                <div>Modo de preparo</div>
+                <div>
+                    {% for preparation in item.preparation %}
+                        <input 
+                            type="text"
+                            name="preparation[]"
+                            value="{{ preparation }}"
+                        >
+                    {% endfor %}
+                </div>
+                <button type="button" class="add-preparation">Adicionar novo passo</button>
+                <button type="button" class="remove-preparation">Remover passo</button>
+            </div>
+
+            <div class="item">
+                <div>Informações Adicionais</div>
+                <div>
+                    <textarea 
+                        type="text"
+                        name="informations"
+                    >{{ item.information }}</textarea>
+                </div>
+            </div>
+        </form>
+    </section>
+{% endblock %}

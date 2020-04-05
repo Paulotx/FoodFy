@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <section id="recipe-container">    
+    <section id="recipe-container">
+        <div class="header-recipe">
+            <span>Receita: {{ item.title }}</span>
+            <a href="/admin/recipes/{{ item.index }}/edit" class="button">Editar receita</a>
+        </div> 
+
         <div class="recipe-viewed">
             <img src="{{ item.image }}" alt="Imagem de {{ item.title }}" class="burguer">
             <h1>{{ item.title }}</h1>
