@@ -7,5 +7,5 @@ exports.home = function(req, res) {
         firtsRecipes.push(recipes[i]);
     }
 
-    return res.render('index', { items: firtsRecipes });
+    return res.render('user/index', { items: firtsRecipes });
 }

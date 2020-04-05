@@ -1,4 +1,4 @@
 
 exports.about = function(req, res) {
-    return res.render('about');
+    return res.render('user/about');
 }

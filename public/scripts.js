@@ -1,27 +1,15 @@
-// const modalOverlay = document.querySelector('.modal-overlay');
-// const videos       = document.querySelectorAll('.video');
+const recipes_admin = document.querySelectorAll('.recipe-admin a');
 
-// for (let video of videos) {
-//     video.addEventListener('click', function() {
-//         const videoSrc = video.querySelector('img').getAttribute('src');
-//         const h3       = video.querySelector('h3').innerHTML;
-//         const p        = video.querySelector('p').innerHTML;
+for(let i = 0; i < recipes_admin.length; i++) {
+    recipes_admin[i].addEventListener('click', function() {
+        const recipeID = i;
+        window.location.href = `/admin/recipes/${ recipeID }`;
+    });
+}
 
-//         modalOverlay.classList.add('active');
-//         modalOverlay.querySelector('.modal-content img').src      = videoSrc;
-//         modalOverlay.querySelector('.modal-content h3').innerHTML = h3;
-//         modalOverlay.querySelector('.modal-content p').innerHTML  = p;
-//     })
-// }
-
-// document.querySelector('.close-modal').addEventListener('click', function() {
-//     modalOverlay.classList.remove('active');
-// });
-
-
-
-const modalOverlay = document.querySelector('.modal-overlay');
 const recipes     = document.querySelectorAll('.recipe');
+
+console.log(recipes);
 
 for(let i = 0; i < recipes.length; i++) {
     recipes[i].addEventListener('click', function() {
