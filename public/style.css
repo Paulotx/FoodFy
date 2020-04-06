@@ -367,7 +367,8 @@ footer p {
 }
 
 .header-recipe a,
-.header-edit a {
+.header-edit a,
+.button {
     font-size: 16px;
     line-height: 19px;
     color: #FFF;
@@ -375,8 +376,8 @@ footer p {
     background-color: #6558C3;
     padding: 8px 20px;
     border-radius: 4px;
-    width: 136px;
     height: 37px;
+    cursor: pointer;
 }
 
 /* === EDIT  ===*/
@@ -404,7 +405,7 @@ footer p {
     margin-bottom: 30px;
 }
 
-.item div:first-child {
+.item > div {
     font-size: 16px;
     line-height: 19px;
     font-weight: bold;;
@@ -425,10 +426,6 @@ footer p {
     margin-bottom: 10px;
 }
 
-.item input:last-child {
-    margin-bottom: 0;
-}
-
 .item textarea {
     resize: none;
     font-family: Roboto;
@@ -438,7 +435,8 @@ footer p {
 }
 
 .item button {
-    margin-top: 15px;
+    margin-top: 5px;
+    background: none;
 }
 
 .item button {
