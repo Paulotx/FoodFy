@@ -309,7 +309,8 @@ footer p {
 .recipes-admin {
     width: 940px;
     display: grid;
-    grid-template-columns: 1fr 1fr;  
+    grid-template-columns: 1fr 1fr;
+    margin-top: 40px;
 }
 
 .recipe-admin {
@@ -398,6 +399,12 @@ footer p {
 
 .header-edit a:first-child {
     background-color: #DC4747;
+}
+
+.button-delete {
+    background-color: #DC4747;
+    position: absolute;
+    left: 1120px;
 }
 
 /* === FIELDS === */

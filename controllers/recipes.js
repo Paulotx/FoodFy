@@ -47,8 +47,6 @@ exports.post = function(req, res) {
 
     let { title, author, image, ingredients, preparation, informations} = req.body;
 
-    //const id = Number(data.recipes.length + 1);
-
     data.recipes.push({  
         title,
         author,
@@ -61,7 +59,7 @@ exports.post = function(req, res) {
     fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
         if(err) return res.sed("Write file error!");
 
-        return res.redirect(`/admin/recipes/${ data.recipes.length - 1 }`);
+        return res.redirect(`/admin/recipes`);
     });
 }
 
@@ -69,22 +67,55 @@ exports.post = function(req, res) {
 exports.edit = function(req, res) {
     const index = req.params.index;
 
-    const recipe = data.recipes[index];
+    let recipe = data.recipes[index];
 
     if(!recipe) {
         return res.send("Receita não encontrada!");
     }
 
+    recipe = {
+        ...recipe,
+        index
+    }
+
     return res.render("admin/edit", { item: recipe });
 }
 
-
 // put
-exports.put = function(res, req) {
-    return res.send("PUT");
+exports.put = function(req, res) {
+    const { index } = req.body;
+
+    let searchRecipe = data.recipes[index];
+
+    if(!searchRecipe) return res.send("Recipe not found!");
+
+    const recipe = {
+        ...searchRecipe,
+        ...req.body
+    }
+
+    data.recipes[index] = recipe;
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
+        if(err) return res.send("Write error!");
+
+        return res.redirect(`/admin/recipes/`);
+    });
 }
 
 // delete
-exports.delete = function(res, req) {
-    return res.send("DELETE");
+exports.delete = function(req, res) {
+    const { index } = req.body;
+
+    let searchRecipe = data.recipes[index];
+
+    if(!searchRecipe) return res.send("Recipe not found!");
+
+    data.recipes.splice(index, 1);
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2,), function(err) {
+        if(err) return res.send("Write error!");
+
+        return res.redirect(`/admin/recipes`);
+    });
 }

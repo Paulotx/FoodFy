@@ -6,7 +6,11 @@
 
 {% block content %}
     <section id="most-viewed">
-        <h1 class="title-admin">Gerenciar Receitas</h1>
+        <div class="header-recipe">
+            <h1 class="title-admin">Gerenciar Receitas</h1>
+            <a href="/admin/recipes/create" class="button button-criar">Novo</a>
+        </div>
+        
 
         <div class="recipes-admin">
             {% for item in items %}

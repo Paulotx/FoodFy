@@ -6,15 +6,19 @@
 
 {% block content %}
     <section class="edit-container">
-        <div class="header-edit">
-            <span>Editando Receitas</span>
-            <div>
-                <a href="#" class="button">Deletar receita</a>
-                <a href="#" class="button">Salvar receira</a>
-            </div>
-        </div>
+        <form id="form-delete" action="/admin/recipes?_method=DELETE" method="POST">
+            <input type="hidden" name="index" value="{{ item.index }}">
+            <button type="submit" class="button button-delete">Deletar receita</button>
+        </form>
 
-        <form>
+        <form method="POST" action="/admin/recipes?_method=PUT">
+            <div class="header-edit">
+                <span>Editando Receitas</span>
+                <div>
+                    <button type="submit" class="button">Salvar receita</button>
+                </div>
+            </div>
+        
             {% include 'admin/filds.njk' %}
 
             <div class="item">
@@ -60,6 +64,12 @@
                     >{{ item.informations }}</textarea>
                 </div>
             </div>
+
+            <input type="hidden" name="index" value="{{ item.index }}">
+        </form>
+        
+        <form id="form-delete" action="/admin/recipes?_method=DELETE" method="POST">
+            <input type="hidden" name="index" value="{{ item.index }}">
         </form>
     </section>
 {% endblock %}
