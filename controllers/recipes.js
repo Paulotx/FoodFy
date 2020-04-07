@@ -27,7 +27,7 @@ exports.show = function(req, res) {
     if(req.route.path == "/recipes/:index")
         return res.render("user/recipe", { item: recipe });
 
-        return res.render("admin/recipe", { item: recipe });
+    return res.render("admin/recipe", { item: recipe });
 }
 
 // create
