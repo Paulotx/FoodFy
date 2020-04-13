@@ -15,7 +15,8 @@ header {
     width: 940px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 2fr;
+    align-items: center;
     padding: 30px 0;
 }
 
@@ -26,6 +27,10 @@ header .menu a {
     text-decoration: none;
     margin-right: 30px;
     vertical-align: middle;
+}
+
+.search {
+    float: right;
 }
 
 /*** INTRODUCTION ***/
@@ -86,11 +91,11 @@ header .menu a {
 
 .recipes .recipe {
     width: 300px;
-    cursor: pointer;
 }
 
 .recipes .recipe img {
     width: 100%;
+    height: 140px;
     border-radius: 15px;
 }
 
@@ -206,19 +211,21 @@ footer p {
 }
 
 /*=== RECEITAS ===*/
-#recipe-container {
+#recipe-container,
+#chef-container {
     width: 940px;
     margin: 0 auto;
     padding: 26px 0 50px 0;
 }
 
-.recipe-viewed {
+.recipe-viewed,
+.chef-viewed {
     width: 940px;   
     text-align: center;
     padding: 0 0 50px 0;
 }
 
-.recipe-viewed img {
+.recipe-viewed .img {
     width: 100%;
     height: 280px;
     border-radius: 15px;
@@ -297,23 +304,33 @@ footer p {
     display: block;
 }
 
+.menu-admin{
+    width: 940px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+.menu-admin .menu {
+    float: left;
+}
+
+.menu-admin .menu a {
+    color: #FFF;
+}
+
 #most-viewed h1.title-admin {
     margin-bottom: 30px;
 }
 
-.header-admin div {
-    width: 940px;
-    margin: 0 auto;
-}
-
-.recipes-admin {
+.recipes-admin, .chefs {
     width: 940px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 40px;
 }
 
-.recipe-admin {
+.recipe-admin, .chef {
     display: flex;
     margin-bottom: 20px;
 }
@@ -352,14 +369,16 @@ footer p {
 }
 
 .header-recipe,
-.header-edit {
+.header-edit,
+.header-chef {
     display: flex;
     justify-content: space-between;
-    align-items: top;
+
 }
 
 .header-recipe span,
-.header-edit span {
+.header-edit span,
+.header-chef  {
     font-size: 24px;
     line-height: 28px;
     color: #111;
@@ -381,11 +400,15 @@ footer p {
     cursor: pointer;
 }
 
-/* === EDIT  ===*/
+.header-edit .button {
+    margin-right: 160px;
+}
 
+/* === EDIT  ===*/
 .edit-container {
     width: 940px;
     margin: 0 auto;
+    position: relative;
 }
 
 .header-edit {
@@ -404,7 +427,7 @@ footer p {
 .button-delete {
     background-color: #DC4747;
     position: absolute;
-    left: 1120px;
+    right: 0px;
 }
 
 /* === FIELDS === */
@@ -421,7 +444,9 @@ footer p {
 }
 
 .item input,
-.item textarea {
+.item select,
+.item textarea,
+.search input {
     width: 100%;
     padding: 8px 16px;
     border-radius: 4px;
@@ -431,6 +456,10 @@ footer p {
     line-height: 19px;
     color: #111;
     margin-bottom: 10px;
+}
+
+.search input {
+    width: auto;
 }
 
 .item textarea {
@@ -462,4 +491,60 @@ footer p {
 .item button:last-child {
     color: #DC4747;
     margin-left: 50px;
+}
+
+/* === Chefs ===*/
+.chefs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.chef {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.chef div:first-child {
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.chef h3 {
+    color: #111;
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.chef a {
+    color: #6558C3;
+    text-decoration: none;
+}
+
+.chef-viewed .img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.chef-viewed {
+    margin-top: 50px;
+}
+
+.chef-viewed h1 {
+    margin-top: 30px;
+}
+
+.chef-viewed p {
+    margin-top: 4px;
+}
+
+.layout-chef {
+    float: left;
 }

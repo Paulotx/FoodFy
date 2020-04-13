@@ -11,18 +11,17 @@
             <a href="/admin/recipes/create" class="button button-criar">Novo</a>
         </div>
         
-
         <div class="recipes-admin">
-            {% for item in items %}
+            {% for recipe in recipes %}
                 <div class="recipe-admin">
-                    <div style="background: url({{ item.image }}) no-repeat center center / cover;">
+                    <div style="background: url({{ recipe.image }}) no-repeat center center / cover;">
             
                     </div>
                     
                     <div>
-                        <h3>{{ item.title }}</h3>
-                        <p>{{ item.author }}</p>
-                        <a>Visualizar</a>
+                        <h3>{{ recipe.title }}</h3>
+                        <p>{{ recipe.chef_id }}</p>
+                        <a href="/admin/recipes/{{ recipe.id }}">Visualizar</a>
                     </div>                    
                 </div>
             {% endfor %}

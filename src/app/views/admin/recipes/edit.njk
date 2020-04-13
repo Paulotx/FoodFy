@@ -7,7 +7,7 @@
 {% block content %}
     <section class="edit-container">
         <form id="form-delete" action="/admin/recipes?_method=DELETE" method="POST">
-            <input type="hidden" name="index" value="{{ item.index }}">
+            <input type="hidden" name="id" value="{{ recipe.id }}">
             <button type="submit" class="button button-delete">Deletar receita</button>
         </form>
 
@@ -19,13 +19,13 @@
                 </div>
             </div>
         
-            {% include 'admin/filds.njk' %}
+            {% include 'admin/recipes/fields.njk' %}
 
             <div class="item">
                 <div>Ingredientes</div>
                 <div id="ingredients">
                     <div class="ingredient">
-                        {% for ingredient in item.ingredients %}
+                        {% for ingredient in recipe.ingredients %}
                             <input
                                 type="text"
                                 name="ingredients[]"
@@ -41,7 +41,7 @@
             <div class="item">
                 <div>Modo de preparo</div>
                 <div>
-                    {% for preparation in item.preparation %}
+                    {% for preparation in recipe.preparation %}
                         <input 
                             type="text"
                             name="preparation[]"
@@ -60,15 +60,11 @@
                         type="text"
                         name="informations"
                         value=""
-                    >{{ item.informations }}</textarea>
+                    >{{ recipe.information }}</textarea>
                 </div>
             </div>
 
-            <input type="hidden" name="index" value="{{ item.index }}">
-        </form>
-        
-        <form id="form-delete" action="/admin/recipes?_method=DELETE" method="POST">
-            <input type="hidden" name="index" value="{{ item.index }}">
+            <input type="hidden" name="id" value="{{ recipe.id }}">
         </form>
     </section>
 {% endblock %}

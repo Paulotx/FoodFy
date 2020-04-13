@@ -12,9 +12,15 @@
 
     <body>
         <header class="header-admin">
-            <div>
-                <a href="/admin/recipes"><img src="/assets/logo-branca.png" alt="Logo Foodfy" class="logo"></a>
-            </div>            
+            <div class="menu-admin">
+                <div>
+                    <a href="/admin/recipes"><img src="/assets/logo-branca.png" alt="Logo Foodfy" class="logo"></a>
+                </div>
+                <div class="menu">
+                    <a href="/admin/recipes">Receitas</a>
+                    <a href="/admin/chefs">Chefes</a>
+                </div>
+            </div>                        
         </header>
 
         {% block content %}

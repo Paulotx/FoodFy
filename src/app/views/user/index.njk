@@ -14,12 +14,12 @@
         <h1>Novas Receitas</h1>
 
         <div class="recipes">
-            {% for item in items %}
+            {% for recipe in recipes %}
 
                 <div class="recipe">
-                    <img src="{{ item.image }}" alt="Imagem de {{ item.title }}" class="burguer">
-                    <h3>{{ item.title }}</h3>
-                    <p>{{ item.author }}</p>
+                    <img src="{{ recipe.image }}" alt="Imagem de {{ recipe.title }}" class="burguer">
+                    <h3>{{ recipe.title }}</h3>
+                    <p>{{ recipe.chef_id }}</p>
                 </div>
 
             {% endfor %}

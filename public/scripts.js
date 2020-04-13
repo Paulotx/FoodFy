@@ -7,14 +7,14 @@ for(let i = 0; i < recipes_admin.length; i++) {
     });
 }
 
-const recipes = document.querySelectorAll('.recipe');
+// const recipes = document.querySelectorAll('.recipe');
 
-for(let i = 0; i < recipes.length; i++) {
-    recipes[i].addEventListener('click', function() {
-        const recipeID = i;
-        window.location.href = `/recipes/${ recipeID }`;
-    });
-}
+// for(let i = 0; i < recipes.length; i++) {
+//     recipes[i].addEventListener('click', function() {
+//         const recipeID = i;
+//         window.location.href = `/recipes/${ recipeID }`;
+//     });
+// }
 
 /* Show-Hide */
 const ingredients      = document.querySelector('.ingredients ul');

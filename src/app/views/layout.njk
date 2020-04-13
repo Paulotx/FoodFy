@@ -13,10 +13,23 @@
     <body>
         <header>
             <a href="/"><img src="/assets/logo.png" alt="Logo Foodfy" class="logo"></a>
+
             <div class="menu">
                 <a href="/about">Sobre</a>
                 <a href="/recipes">Receitas</a>
-            </div>        
+                <a href="/chefs">Chefes</a>
+            </div>
+
+            <form action="/recipes" method="GET">
+                <div class="search">
+                    <input 
+                        type="text" 
+                        name="recipe" 
+                        placeholder="Buscar uma receita"
+                    >
+                    <button type="submit" class="button">Buscar</button>
+                </div> 
+            </form>                   
         </header>
 
         {% block content %}

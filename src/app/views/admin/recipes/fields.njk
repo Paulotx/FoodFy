@@ -4,19 +4,20 @@
         <input 
             type="text"
             name="title"
-            value="{{ item.title }}"
+            value="{{ recipe.title }}"
         >
     </div>
 </div>
 
 <div class="item">
-    <div>Autor da receita</div>
+    <div>Chefe</div>
     <div>
-        <input 
-            type="text"
-            name="author"
-            value="{{ item.author }}"
-        >
+        <select name="chef_id">
+            <option value="0">Selecione um Chefe</option>
+            <option value="1">Paulo André</option>
+            <option value="2">Mirelle</option>
+            <option value="3">Sofia</option>
+        </select>
     </div>
 </div>
 
@@ -26,7 +27,7 @@
         <input 
             type="url"
             name="image"
-            value="{{ item.image }}"
+            value="{{ recipe.image }}"
         >
     </div>
 </div>

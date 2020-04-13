@@ -7,9 +7,10 @@
 {% block content %}
     <section id="recipe-container">    
         <div class="recipe-viewed">
-            <img src="{{ item.image }}" alt="Imagem de {{ item.title }}" class="burguer">
-            <h1>{{ item.title }}</h1>
-            <p>por {{ item.author }}</p>
+            
+            <div class="img" style="background: url({{ recipe.image }}) no-repeat center center / cover;"></div>
+            <h1>{{ recipe.title }}</h1>
+            <p>por {{ recipe.chef_id }}</p>
         </div>
 
         <div class="ingredients">
@@ -20,7 +21,7 @@
            
             <ul class="ingredients-list">
 
-                {% for ingredient in item.ingredients %}
+                {% for ingredient in recipe.ingredients %}
                     <li>{{ ingredient }}</li>
                 {% endfor %}
             </ul>
@@ -33,7 +34,7 @@
             </div>
             
             <p>
-                {% for preparation in item.preparation %}
+                {% for preparation in recipe.preparation %}
                     {{ preparation }}
                 {% endfor %}
             </p>
@@ -46,7 +47,7 @@
             </div>
             
             <p>
-                {{ item.informations }}
+                {{ recipe.information }}
             </p>
         </div>
     </section>
