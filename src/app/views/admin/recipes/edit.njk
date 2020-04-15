@@ -24,29 +24,31 @@
             <div class="item">
                 <div>Ingredientes</div>
                 <div id="ingredients">
-                    <div class="ingredient">
-                        {% for ingredient in recipe.ingredients %}
+                    {% for ingredient in recipe.ingredients %}
+                        <div class="ingredient">
                             <input
                                 type="text"
                                 name="ingredients[]"
                                 value="{{ ingredient }}"
-                            >
-                        {% endfor %}
-                        <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
-                        <button type="button" class="remove-ingredient">Remover ingrediente</button>
-                    </div>
-                </div>                                
+                            >                     
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+                <button type="button" class="remove-ingredient">Remover ingrediente</button>                                
             </div>
 
             <div class="item">
                 <div>Modo de preparo</div>
-                <div>
+                <div id="preparation">
                     {% for preparation in recipe.preparation %}
-                        <input 
-                            type="text"
-                            name="preparation[]"
-                            value="{{ preparation }}"
-                        >
+                        <div class="stage">
+                            <input 
+                                type="text"
+                                name="preparation[]"
+                                value="{{ preparation }}"
+                            >
+                        </div>
                     {% endfor %}
                 </div>
                 <button type="button" class="add-preparation">Adicionar novo passo</button>

@@ -7,11 +7,11 @@
 {% block content %}
     <section class="edit-container">
 
-    <form method="POST" action="/admin/recipes">
-        <div class="header-edit">
-            <span>Criando Chefes</span>
-            <button type="submit" class="button">Salvar</button>            
-        </div>
+        <form method="POST" action="/admin/chefs">
+            <div class="header-edit">
+                <span>Criando Chefes</span>
+                <button type="submit" class="button btn">Salvar</button>            
+            </div>
 
             {% include 'admin/chefs/fields.njk' %}
 

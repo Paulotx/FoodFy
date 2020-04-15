@@ -368,6 +368,10 @@ footer p {
     cursor: pointer;
 }
 
+.header-recipe {
+    margin: 30px 0;
+}
+
 .header-recipe,
 .header-edit,
 .header-chef {
@@ -402,6 +406,10 @@ footer p {
 
 .header-edit .button {
     margin-right: 160px;
+}
+
+.header-edit .btn {
+    margin-right: 0;
 }
 
 /* === EDIT  ===*/
@@ -547,4 +555,31 @@ footer p {
 
 .layout-chef {
     float: left;
+}
+
+.chef-user {
+    margin-top: 0;
+}
+
+#most-viewed.chef-user {
+    padding-top: 0;
+}
+
+/* === PAGINATION === */
+.pagination {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.pagination a,
+.pagination span {
+    color: #6558C3;
+    text-decoration: none;
+    margin-right: 16px;
+    font-weight: bold;
+}
+
+.pagination a:hover {
+    filter: brightness(0.3);
+    border-bottom: 1px solid #6558C3;
 }

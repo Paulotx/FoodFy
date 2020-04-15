@@ -3,7 +3,7 @@ const db       = require("../../config/db");
 module.exports = {
 
     all(callback) {
-        db.query(`SELECT * FROM recipes ORDER BY id ASC`, function(err, results) {
+        db.query(`SELECT * FROM chefs ORDER BY id ASC`, function(err, results) {
             if(err) throw `Database Error! ${ err }`;
 
             callback(results.rows);
@@ -12,15 +12,11 @@ module.exports = {
 
     create(values, callback) {
         const query = `
-            INSERT INTO recipes(
-                chef_id,
-                image,
-                title,
-                ingredients,
-                preparation,
-                information,
+            INSERT INTO chefs(
+                name,
+                avatar_url,
                 created_at
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+            ) VALUES ($1, $2, $3)
             RETURNING id
         `;
 
@@ -32,7 +28,17 @@ module.exports = {
     },
 
     find(id, callback) {
-        db.query(`SELECT * FROM recipes WHERE id = $1`, [ id ], function(err, results) {
+        db.query(`
+            SELECT chefs.*, count(recipes) AS total_recipes
+            FROM chefs 
+            LEFT JOIN recipes ON (chefs.id = recipes.chef_id)
+            WHERE chefs.id = $1
+            GROUP BY chefs.id
+        `, 
+
+        [ id ]
+
+        , function(err, results) {
             if(err) throw `Database Error! ${ err }`;
 
             callback(results.rows[0]);
@@ -41,7 +47,7 @@ module.exports = {
 
     update(values, callback) {
         const query = `
-            UPDATE recipes SET
+            UPDATE chefs SET
                 chef_id = $1,
                 image = $2,
                 title = $3,
@@ -59,10 +65,18 @@ module.exports = {
     },
 
     delete(id, callback) {
-        db.query(`DELETE FROM recipes WHERE id = $1`, [ id ], function(err, results) {
+        db.query(`DELETE FROM chefs WHERE id = $1`, [ id ], function(err, results) {
             if(err) throw `Database Error! ${ err }`;
 
             return callback();
+        });
+    },
+
+    chefRecipesImage(id, callback) {
+        db.query(`SELECT id, title, image FROM recipes WHERE chef_id = $1`, [ id ], function(err, results) {
+            if(err) throw `Database Error! ${ err }`;
+
+            return callback(results.rows);
         });
     }
 }

@@ -13,10 +13,12 @@
     <div>Chefe</div>
     <div>
         <select name="chef_id">
-            <option value="0">Selecione um Chefe</option>
-            <option value="1">Paulo André</option>
-            <option value="2">Mirelle</option>
-            <option value="3">Sofia</option>
+                <option value="0">Selecione...</option>
+            {% for chef in chefOptions %}
+                <option value="{{ chef.id }}" {% if recipe.chef_id == chef.id %} selected {% endif %}>
+                    {{ chef.name }}
+                </option>            
+            {% endfor  %}
         </select>
     </div>
 </div>

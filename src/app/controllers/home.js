@@ -1,5 +1,5 @@
 
-const Recipe   = require("../model/Recipe");
+const Recipe = require("../model/Recipe");
 
 exports.home = function(req, res) {
 

@@ -13,93 +13,19 @@
         
         <div class="chefs">
 
+            {% for chef in chefs %}
                 <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
+                    <div style="background: url({{ chef.avatar_url }}) no-repeat center center / cover;">
             
                     </div>
                     
                     <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
+                        <h3>{{ chef.name }}</h3>
+                        <a href="/admin/chefs/{{ chef.id }}">Visualizar</a>
                     </div>                    
                 </div>
-
-                <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
-            
-                    </div>
-                    
-                    <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
-                    </div>                    
-                </div>
-
-                <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
-            
-                    </div>
-                    
-                    <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
-                    </div>                    
-                </div>
-
-                <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
-            
-                    </div>
-                    
-                    <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
-                    </div>                    
-                </div>
-
-                <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
-            
-                    </div>
-                    
-                    <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
-                    </div>                    
-                </div>
-
-                <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
-            
-                    </div>
-                    
-                    <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
-                    </div>                    
-                </div>   
-
-                <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
-            
-                    </div>
-                    
-                    <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
-                    </div>                    
-                </div> 
-
-                <div class="chef">
-                    <div style="background: url(https://images.unsplash.com/photo-1558549900-c11cb6293fb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60) no-repeat center center / cover;">
-            
-                    </div>
-                    
-                    <div>
-                        <h3>Mirelle Carolyne</h3>
-                        <a href="#">Visualizar</a>
-                    </div>                    
-                </div>          
+            {% endfor %}
+                 
         </div>
     </section>
 {% endblock %}

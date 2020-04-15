@@ -14,7 +14,7 @@
         <div class="recipe-viewed">
             <div class="img" style="background: url({{ recipe.image }}) no-repeat center center / cover;"></div>
             <h1>{{ recipe.title }}</h1>
-            <p>por {{ recipe.chef_id }}</p>
+            <p>por {{ recipe.chef_name}}</p>
         </div>
 
         <div class="ingredients">
@@ -24,7 +24,6 @@
             </div>
            
             <ul class="ingredients-list">
-
                 {% for ingredient in recipe.ingredients %}
                     <li>{{ ingredient }}</li>
                 {% endfor %}

@@ -16,10 +16,18 @@
                             <img src="{{ recipe.image }}" alt="Imagem de {{ recipe.title }}" class="burguer">
                         </a>
                         <h3>{{ recipe.title }}</h3>
-                        <p>{{ recipe.chef_id }}</p>
+                        <p>{{ recipe.chef_name }}</p>
                     </div>
                 
             {% endfor %}
+        </div>
+
+        <div 
+            class="pagination"
+            data-page="{{ pagination.page }}"
+            data-total="{{ pagination.total }}"
+            data-filter="{{ filter }}"
+        >
         </div>
     </section>
 {% endblock %}

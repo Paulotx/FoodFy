@@ -3,12 +3,17 @@ const Chef   = require("../model/Chef.js");
 
 module.exports = {
     
-    index(req, res){
-        return res.render("admin/chefs/chefs");                      
+    index(req, res){ 
+        Chef.all(function(chefs) {
+            if(req.route.path == "/chefs")
+                return res.render("user/chefs", { chefs });
+
+            return res.render("admin/chefs/chefs", { chefs });
+        });
     },
 
     create(req, res){
-        return res.render("admin/chefs/create");
+        return res.render('admin/chefs/create');
     },
 
     post(req, res){
@@ -21,35 +26,38 @@ module.exports = {
         }
 
         const values = [
-            req.body.chef_id,
-            req.body.image,
-            req.body.title,
-            req.body.ingredients,
-            req.body.preparation,
-            req.body.informations,
-            date(Date.now()).iso
+            req.body.name,
+            req.body.avatar_url,
+            date(Date.now()).iso 
         ];
 
-        Chef.create(values, function(chef) {
+        Chef.create(values, function(recipe) {
             return res.redirect("/admin/chefs");
         });
     },
 
     show(req, res){
         Chef.find(req.params.id, function(chef) {
-
             if(!chef) return res.send("Chef not found!");
 
-            if(req.route.path == "/chefs/:id") return res.render("user/chef", { chef });
+            Chef.chefRecipesImage(req.params.id, function(recipes) {
 
-            return res.render("admin/chefs/chef", { chef });
+                if(req.route.path == "/chefs/:id")
+                    return res.render("user/chef", { chef, recipes });
+
+                return res.render("admin/chefs/chef", { chef, recipes });
+            });             
         });
     },
 
     edit(req, res){
 
-        return res.render("admin/chefs/edit");
+        Chef.find(req.params.id, function(chef) {
 
+            if(!chef) return res.send("Chef not found!");
+
+            return res.render("admin/chefs/edit", { chef });
+        });        
     },
 
     put(req, res){

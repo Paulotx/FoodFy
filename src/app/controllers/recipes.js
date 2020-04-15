@@ -4,16 +4,38 @@ const Recipe   = require("../model/Recipe");
 module.exports = {
     
     index(req, res){
-        Recipe.all(function(recipes) {
-            if(req.route.path == "/recipes") 
-                return res.render("user/recipes", { recipes });
+        let { filter, page, limit } = req.query;
+        
+        page       = page || 1;
+        limit      = limit || 6;
+        let offset = limit * (page - 1);
 
-            return res.render("admin/recipes/recipes", { recipes }); 
-        });               
+        const params = {
+            filter,
+            page, 
+            limit,
+            offset,
+            callback(recipes) {
+
+                const pagination = {
+                    total: Math.ceil(recipes[0].total / limit),
+                    page
+                }  
+
+                if(req.route.path == "/recipes") 
+                    return res.render("user/recipes", { recipes, pagination, filter });
+    
+                return res.render("admin/recipes/recipes", { recipes });
+            }
+        }
+
+        Recipe.paginate(params);                       
     },
 
     create(req, res){
-        return res.render("admin/recipes/create");
+        Recipe.chefSelectOptions(function(options) {
+            return res.render('admin/recipes/create', { chefOptions: options });
+        });
     },
 
     post(req, res){
@@ -23,6 +45,10 @@ module.exports = {
             if(req.body[key] == "") {
                 return res.send("Please, fill all fields");
             }      
+        }
+
+        if(req.body.chef_id == 0) {
+            return res.send("Plese, select a chef!");
         }
 
         const values = [
@@ -42,7 +68,6 @@ module.exports = {
 
     show(req, res){
         Recipe.find(req.params.id, function(recipe) {
-
             if(!recipe) return res.send("Recipe not found!");
 
             if(req.route.path == "/recipes/:id") return res.render("user/recipe", { recipe });
@@ -56,7 +81,9 @@ module.exports = {
 
             if(!recipe) return res.send("Recipe not found!");
 
-            return res.render("admin/recipes/edit", { recipe });
+            Recipe.chefSelectOptions(function(options) {
+                return res.render('admin/recipes/edit', {recipe, chefOptions: options });
+            });
         });
     },
 
@@ -67,6 +94,10 @@ module.exports = {
             if(req.body[key] == "") {
                 return res.send('Please, fill all fields"');
             }      
+        }
+
+        if(req.body.chef_id == 0) {
+            return res.send("Plese, select a chef!");
         }
 
         const values = [

@@ -1,22 +1,26 @@
 {% extends "layout.njk" %}
 
 {% block head %}
-    <title>Chefes - Foodfy</title>
+    <title>Chefs - Foodfy</title>
 {% endblock %}
 
 {% block content %}
-    <section id="most-viewed">
-
+    <section id="most-viewed" class="chef-user">        
         <div class="chefs">
+        
             {% for chef in chefs %}
-                
-                    <div class="chef">
-                        <img src="{{ chef.image }}" alt="Imagem de {{ chef.title }}" class="burguer">                        
-                        <h3>{{ chef.name }}</h3>
-                        <p>{{ chef.total_recipes }} receitas</p>
+                <div class="chef">
+                    <div style="background: url({{ chef.avatar_url }}) no-repeat center center / cover;">
+            
                     </div>
-                
+                    
+                    <div>
+                        <h3>{{ chef.name }}</h3>
+                        <a href="/chefs/{{ chef.id }}">Visualizar</a>
+                    </div>                    
+                </div>
             {% endfor %}
+                 
         </div>
     </section>
 {% endblock %}

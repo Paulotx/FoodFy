@@ -18,6 +18,9 @@ routes.get("/recipes/:id", recipes.show);
 //About
 routes.get("/about", about.about);
 
+routes.get("/chefs", chefs.index);
+routes.get("/chefs/:id", chefs.show);
+
 /*=== ADMIN ===*/
 routes.get("/admin/recipes", recipes.index); 
 routes.get("/admin/recipes/create", recipes.create); 

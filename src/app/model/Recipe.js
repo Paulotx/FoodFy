@@ -3,7 +3,14 @@ const db       = require("../../config/db");
 module.exports = {
 
     all(callback) {
-        db.query(`SELECT * FROM recipes ORDER BY id ASC`, function(err, results) {
+        db.query(`
+            SELECT recipes.*, chefs.name AS chef_name 
+            FROM recipes
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            ORDER BY recipes.title ASC
+        `, 
+        function(err, results) {
+
             if(err) throw `Database Error! ${ err }`;
 
             callback(results.rows);
@@ -32,11 +39,21 @@ module.exports = {
     },
 
     find(id, callback) {
-        db.query(`SELECT * FROM recipes WHERE id = $1`, [ id ], function(err, results) {
-            if(err) throw `Database Error! ${ err }`;
+        db.query(`
+            SELECT recipes.*, chefs.name AS chef_name
+            FROM recipes 
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            WHERE recipes.id = $1
+            `,
 
-            callback(results.rows[0]);
-        });
+            [ id ], 
+
+            function(err, results) {
+                if(err) throw `Database Error! ${ err }`;
+
+                callback(results.rows[0]);
+            }
+        );
     },
 
     update(values, callback) {
@@ -63,6 +80,67 @@ module.exports = {
             if(err) throw `Database Error! ${ err }`;
 
             return callback();
+        });
+    },
+
+    chefSelectOptions(callback) {
+        db.query(`SELECT name, id FROM chefs ORDER BY name ASC`, function(err, results) {
+            if(err) throw `Database Error! ${ err }`;
+            callback(results.rows);
+        });
+    },
+
+    findBy(filter, callback) {
+        db.query(`
+            SELECT recipes.*, chefs.name AS chef_name 
+            FROM recipes
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            WHERE recipes.title ILIKE '%${ filter }%' 
+            OR chefs.name ILIKE '%${ filter }%'
+            ORDER BY recipes.id ASC
+        `, 
+        function(err, results) {
+            if(err) throw `Database Error! ${ err }`;
+
+            callback(results.rows);
+        });
+    },
+
+    paginate(params) {
+        const { filter, limit, offset, callback } = params;
+
+        let query       = "", 
+            filterQuery = "",
+            totalQuery  = `(
+                SELECT count(*) FROM recipes
+            ) AS total`;
+
+        if(filter) {
+            filterQuery = `
+                WHERE recipes.title ILIKE '%${ filter }%'
+                OR chefs.name ILIKE '%${ filter }%'
+            `;
+
+            totalQuery = `(
+                SELECT count(*) FROM recipes
+                LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+                ${filterQuery}
+            ) as total`;
+        }
+
+        query = `
+            SELECT recipes.*, chefs.name AS chef_name, ${ totalQuery }
+            FROM recipes
+            LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+            ${ filterQuery }
+            ORDER BY recipes.id ASC
+            LIMIT $1 OFFSET $2
+        `;
+
+        db.query(query, [limit, offset], function(err, results) {
+            if(err) throw `Database Error! ${ err }`;
+
+            callback(results.rows);
         });
     }
 }

@@ -129,3 +129,76 @@ function removePreparation() {
 
     preparation[preparation.length - 1].remove();
 }  
+
+
+// Confirmação de Exclusão
+function confirmDelete(formDelete) {
+    formDelete.addEventListener("submit", function(event) {
+        const confirmation = confirm("Deseja Deletar?");
+
+        if(!confirmation) {
+            event.preventDefault();
+        }
+    });
+}
+
+const formDelete = document.querySelector("#form-delete");
+
+if(formDelete) {
+    confirmDelete(formDelete);
+}
+
+function paginate(SelectedPage, totalPages) {
+    let pages = [], oldPage;
+
+    for(let currentPage = 1; currentPage <= totalPages; currentPage++) {
+        
+        const firstAndLastPage = currentPage == 1 || currentPage == totalPages;
+        const pagesAfterSelectedPage = currentPage <= SelectedPage + 2;
+        const pagesBeforeSelectePage = currentPage >= SelectedPage - 2;
+
+        if(firstAndLastPage || pagesBeforeSelectePage && pagesAfterSelectedPage) {
+            if(oldPage && currentPage - oldPage > 2) {
+                pages.push("...");
+            }
+
+            if(oldPage && currentPage - oldPage == 2) {
+                pages.push(oldPage + 1);
+            }
+
+            pages.push(currentPage);
+
+            oldPage = currentPage;
+        }
+    }
+
+    return pages;
+}
+const pagination = document.querySelector(".pagination");
+
+if (pagination) {
+    
+    const page   = +pagination.dataset.page;
+    const total  = +pagination.dataset.total;
+    const filter = pagination.dataset.filter;
+    const pages  = paginate(page, total);
+
+    let elements = "";
+
+    for(let page of pages) {
+        if(String(page).includes("...")){
+            elements += `<span>${ page }</span>`;
+        }
+        else {
+            if(filter) {
+                elements += `<a href="?page=${ page }&filter=${ filter }">${ page }</a>`;
+            }
+            else {
+                elements += `<a href="?page=${ page }">${ page }</a>`;
+            }        
+        }
+    }
+
+    pagination.innerHTML = elements;
+}
+
