@@ -7,7 +7,8 @@ module.exports = {
             SELECT recipes.*, chefs.name AS chef_name 
             FROM recipes
             LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-            ORDER BY recipes.title ASC
+            ORDER BY recipes.id DESC
+            LIMIT 6
         `, 
         function(err, results) {
 
