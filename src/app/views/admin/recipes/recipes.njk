@@ -8,16 +8,30 @@
     <section id="most-viewed">
         <div class="header-recipe">
             <h1 class="title-admin">Gerenciar Receitas</h1>
-            <a href="/admin/recipes/create" class="button button-criar">Novo</a>
+
+            <div class="container-menu">
+                <form action="/admin/recipes" method="GET">
+                    <div class="search">
+                        <input 
+                            type="text" 
+                            name="filter" 
+                            placeholder="Buscar uma receita"
+                            value="{{ filter }}"
+                        >
+                        <button type="submit" class="button">Buscar</button>
+                    </div> 
+                </form>
+
+                <a href="/admin/recipes/create" class="button button-criar">Novo</a>
+            </div>
+           
         </div>
         
         <div class="recipes-admin">
             {% for recipe in recipes %}
                 <div class="recipe-admin">
-                    <div style="background: url({{ recipe.image }}) no-repeat center center / cover;">
-            
-                    </div>
-                    
+                    <img src="{{ recipe.file.src }}" alt="{{ recipe.file.name }}">
+                                        
                     <div>
                         <h3>{{ recipe.title }}</h3>
                         <p>{{ recipe.chef_name }}</p>
@@ -25,6 +39,14 @@
                     </div>                    
                 </div>
             {% endfor %}
+        </div>
+
+        <div 
+            class="pagination"
+            data-page="{{ pagination.page }}"
+            data-total="{{ pagination.total }}"
+            data-filter="{{ filter }}"
+        >
         </div>
     </section>
 {% endblock %}

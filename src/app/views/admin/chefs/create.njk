@@ -1,13 +1,13 @@
 {% extends "layout-admin.njk" %}
 
 {% block head %}
-    <title>Criando Receita - Foodfy</title>
+    <title>Criando Chefe - Foodfy</title>
 {% endblock %}
 
 {% block content %}
     <section class="edit-container">
 
-        <form method="POST" action="/admin/chefs">
+        <form method="POST" action="/admin/chefs" enctype="multipart/form-data">
             <div class="header-edit">
                 <span>Criando Chefes</span>
                 <button type="submit" class="button btn">Salvar</button>            

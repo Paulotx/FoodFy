@@ -13,7 +13,7 @@
                 
                     <div class="recipe">
                         <a href="/recipes/{{ recipe.id }}">
-                            <img src="{{ recipe.image }}" alt="Imagem de {{ recipe.title }}" class="burguer">
+                            <img src="{{ recipe.file.src }}" alt="Imagem de {{ recipe.file.name }}" class="burguer">
                         </a>
                         <h3>{{ recipe.title }}</h3>
                         <p>{{ recipe.chef_name }}</p>

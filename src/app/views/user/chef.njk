@@ -7,7 +7,7 @@
 {% block content %}
     <section id="chef-container">
         <div class="chef-viewed chef-user">
-            <div class="img" style="background: url({{ chef.avatar_url }}) no-repeat center center / cover;"></div>
+            <img src="{{ chef.fileSrc }}" alt="{{ chef.fileName }}">
             <h1>{{ chef.name }}</h1>
             <p>{% if chef.total_recipes == 1 %} {{ chef.total_recipes }} receita {% else %} {{ chef.total_recipes }} receitas {% endif %}</p>
         </div>
@@ -15,9 +15,7 @@
         <div class="recipes-admin">
             {% for recipe in recipes %}
                 <div class="recipe-admin layout-chef">
-                    <div style="background: url({{ recipe.image }}) no-repeat center center / cover;">
-            
-                    </div>
+                    <img src="{{ recipe[0].src }}" alt="{{ recipe.name }}">
                     
                     <div>
                         <h3>{{ recipe.title }}</h3>

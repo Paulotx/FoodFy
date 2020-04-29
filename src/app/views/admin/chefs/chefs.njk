@@ -7,7 +7,7 @@
 {% block content %}
     <section id="most-viewed">
         <div class="header-chef">
-            <h1 class="title-admin">Gerenciar Receitas</h1>
+            <h1 class="title-admin">Gerenciar Chefes</h1>
             <a href="/admin/chefs/create" class="button button-criar">Novo</a>
         </div>
         
@@ -15,9 +15,7 @@
 
             {% for chef in chefs %}
                 <div class="chef">
-                    <div style="background: url({{ chef.avatar_url }}) no-repeat center center / cover;">
-            
-                    </div>
+                    <img src="{{ chef.file.src }}" alt="chef.file.name">
                     
                     <div>
                         <h3>{{ chef.name }}</h3>

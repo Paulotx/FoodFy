@@ -32,9 +32,14 @@
                         </i>
                     </div>
                 {% endfor %}
-                <input type="hidden" name="removed_files">
             {% endif %}
         </div>
+
+        {% if files %}
+            <input type="hidden" name="removed_files">
+        {% endif %}
+
+        <input type="hidden" name="files_lenth" value="{{ filesLength }}">
     </div>
 </div>
 

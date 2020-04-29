@@ -202,6 +202,10 @@ if (pagination) {
     pagination.innerHTML = elements;
 }
 
+function getNumberOlds() {
+    return document.querySelector('input[name="files_lenth"]').value;
+}
+
 const PhotosUpload = {
     input: "",
 
@@ -210,6 +214,8 @@ const PhotosUpload = {
     uploadLimit: 5,
 
     files: [],
+
+    numberOlds: getNumberOlds || 0,
 
     handleFileInput(event) {
         const { files: fileList } = event.target;
@@ -297,9 +303,60 @@ const PhotosUpload = {
         const photosArray = Array.from(PhotosUpload.preview.children);
         const index       = photosArray.indexOf(photoDiv);
 
-        PhotosUpload.files.splice(index, 1);
+        PhotosUpload.files.splice((index - PhotosUpload.numberOlds), 1);
         PhotosUpload.input.files = PhotosUpload.getAllFiles();
 
         photoDiv.remove();
+    },
+
+    removeOldPhoto(event) {
+        const photoDiv = event.target.parentNode;
+
+        if(photoDiv.id) {
+            const removedFiles = document.querySelector('input[name="removed_files"]');
+            if(removedFiles) {
+                removedFiles.value += `${ photoDiv.id },`;
+            }
+        }
+        photoDiv.remove();
+        PhotosUpload.numberOlds--;
+    }
+}
+
+const ImageGallery = {
+    highlight: document.querySelector(".recipe-viewed .highlight > img"),
+
+    previews: document.querySelectorAll(".gallery-preview .container-img-file img"),
+
+    setImage(event) {
+        const { target } = event;
+
+        ImageGallery.previews.forEach(preview => preview.classList.remove("active"));
+        target.classList.add("active");
+
+        ImageGallery.highlight.src = target.src;
+        Lightbox.image.src = target.src;
+    }
+}
+
+const Lightbox = {
+    target: document.querySelector(".lightbox-target"),
+
+    image: document.querySelector(".lightbox-target img"),
+
+    closeButton: document.querySelector(".lightbox-target a.lightbox-close"),
+
+    open() {
+        Lightbox.target.style.opacity = 1;
+        Lightbox.target.style.top = 0;
+        Lightbox.target.style.bottom = 0;
+        Lightbox.closeButton.style.top = 0;
+    },
+
+    close() {
+        Lightbox.target.style.opacity = 0;
+        Lightbox.target.style.top = "-100%"
+        Lightbox.target.style.bottom = "initial";
+        Lightbox.closeButton.style.top = "-80px";
     }
 }
