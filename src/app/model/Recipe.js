@@ -2,21 +2,15 @@ const db = require("../../config/db");
 
 module.exports = {
 
-    all(callback) {
+    all() {
         try {
-            db.query(`
+            return db.query(`
                 SELECT recipes.*, chefs.name AS chef_name 
                 FROM recipes
                 LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
                 ORDER BY recipes.id DESC
                 LIMIT 6
-            `, 
-            function(err, results) {
-
-                if(err) throw `Database Error! ${ err }`;
-
-                callback(results.rows);
-            });
+            `);
         } catch (err) {
             console.error(err);
         }
