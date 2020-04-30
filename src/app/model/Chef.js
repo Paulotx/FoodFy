@@ -73,7 +73,7 @@ module.exports = {
 
     chefRecipes(id) {
         try {
-            return db.query(`SELECT * FROM recipes WHERE chef_id = $1`, [ id ]);
+            return db.query(`SELECT * FROM recipes WHERE chef_id = $1 ORDER BY created_at DESC`, [ id ]);
         }
         catch(err) {
             console.error(err);

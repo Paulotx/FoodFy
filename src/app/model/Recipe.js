@@ -8,7 +8,7 @@ module.exports = {
                 SELECT recipes.*, chefs.name AS chef_name 
                 FROM recipes
                 LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-                ORDER BY recipes.id DESC
+                ORDER BY recipes.created_at DESC
                 LIMIT 6
             `);
         } catch (err) {
@@ -113,7 +113,8 @@ module.exports = {
                 filterQuery = "",
                 totalQuery  = `(
                     SELECT count(*) FROM recipes
-                ) AS total`;
+                ) AS total`,
+                orderBy = "ORDER BY recipes.created_at DESC";
 
             if(filter) {
                 filterQuery = `
@@ -126,6 +127,8 @@ module.exports = {
                     LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
                     ${filterQuery}
                 ) as total`;
+
+                orderBy = "ORDER BY recipes.updated_at DESC";
             }
 
             query = `
@@ -133,7 +136,7 @@ module.exports = {
                 FROM recipes
                 LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
                 ${ filterQuery }
-                ORDER BY recipes.id ASC
+                ${ orderBy }
                 LIMIT $1 OFFSET $2
             `;
 
