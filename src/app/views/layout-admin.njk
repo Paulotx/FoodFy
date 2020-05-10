@@ -12,14 +12,25 @@
     </head>
 
     <body>
+        {% include "parts/messages.njk"%}
+
         <header class="header-admin">
             <div class="menu-admin">
                 <div>
                     <a href="/admin/recipes"><img src="/assets/logo-branca.png" alt="Logo Foodfy" class="logo"></a>
                 </div>
+
                 <div class="menu">
                     <a href="/admin/recipes">Receitas</a>
                     <a href="/admin/chefs">Chefes</a>
+                    <a href="/admin/users">Usuários</a>
+                </div>
+                
+                <div class="logout">
+                    <form action="/logout" method="POST">
+                            <button>Sair</button>
+                    </form>
+                    
                 </div>
             </div>                        
         </header>

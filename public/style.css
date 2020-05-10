@@ -316,15 +316,32 @@ footer p {
     width: 940px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 250px 1fr 100px;
 }
 
 .menu-admin .menu {
     float: left;
 }
 
-.menu-admin .menu a {
+.menu-admin .menu a,
+.logout button {
     color: #FFF;
+    text-transform: uppercase;
+    font-size: 15px
+}
+
+.logout button {
+    background: none;
+    cursor: pointer;
+}
+
+.logout {
+    position: relative;
+}
+
+.logout a {
+    position: absolute;
+    right: 0;
 }
 
 #most-viewed h1.title-admin {
@@ -384,7 +401,8 @@ footer p {
 
 .header-recipe,
 .header-edit,
-.header-chef {
+.header-chef,
+.header-user {
     display: flex;
     justify-content: space-between;
 
@@ -429,6 +447,14 @@ footer p {
 
 .header-edit .btn {
     margin-right: 0;
+}
+
+.btn.btn-cancel {
+    background-color: #8A8A8A;
+}
+
+.btn.btn-cancel:hover {
+    background-color: rgb(196, 33, 33);
 }
 
 /* === EDIT  ===*/
@@ -793,4 +819,192 @@ form .item #photos-preview img {
     transition: 400ms;
 }
 
+.users.edit-container form .fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
 
+.users.edit-container form .isAdmin {
+    display: flex;
+    align-items: center;
+    margin-top: -30px;
+}
+
+.users.edit-container form .isAdmin input[type="checkbox"] {
+    background: none;
+}
+
+.users.edit-container form .isAdmin p{
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.item .error {
+    background-color: rgb(243, 44, 44);
+    border-radius: 4px;
+    padding: 4px;
+    color: #FFF;
+    font-size: 14px;
+    margin-top: -5px;
+}
+
+.item .error-login-input {
+    border-color: #DC4747;
+}
+
+@keyframes hidemessage {
+    to {
+        top: -50px;
+        opacity: 0;
+    }
+}
+
+.messages {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    position: absolute;
+    width: 100%;
+    color: #FFF;
+    top: 0;
+    opacity: 1;
+    animation: hidemessage 400ms 5s ease-out forwards;
+    z-index: 1000;
+}
+
+.messages.error-login,
+.messages.success-forgot {
+    background-color: #DC4747;
+    border-radius: 4px;
+    width: 340px;
+    height: 140px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #FFF;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.messages.success-forgot {
+    background:  rgb(28, 134, 28);
+}
+
+.messages.error {
+    background:  rgb(243, 44, 44);
+}
+
+.messages.success {
+    background:  rgb(28, 134, 28);
+}
+
+.users  {
+    position: relative;
+}
+
+.users .cancel .btn-cancel {
+    position: absolute;
+    right: 0;
+    top: 60px;
+}
+
+.users .header-edit .buttons {
+    margin-right: 110px;
+} 
+
+.users-container .header-edit .button-edit {
+    margin-right: 100px;
+}
+
+.header-edit .button-edit {
+    margin-right: 110px;
+}
+
+.users-container {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.users-container h3 {
+    font-size: 18px;
+    font-weight: normal;
+    color: #111;
+}
+
+.users-container p {
+    font-size: 14px;
+    color: #777;
+    margin-top: 4px;
+}
+
+.users-container .users-button {
+    margin-top: 16px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.users-container .users-button #form-delete {
+    margin-top: 0;
+}
+
+.users-container .users-button form button {
+    color: #F55A5A;
+    margin-right: 16px;
+    font-size: 14px;
+    margin-left: 30px;
+    background: none;
+    cursor: pointer;
+}
+
+.users-container .users-button a:first-child {
+    color: #6558C3;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+/* LOGIN */
+#login {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#login h1 {
+    margin: 120px 0 50px 0;
+    text-align: center;
+    font-size: 36px;
+}
+
+#login .fields input {
+    padding: 20px 12px;
+}
+
+.header-login {
+    display: block;
+    text-align: center;
+}
+
+#login .fields .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#login .fields a {
+    color: #969696;
+    font-size: 16px;
+}
+
+#login.forgot-password .buttons,
+#login.reset-password .buttons {
+    float: right;
+}
+
+.item.password {
+    margin-top: -30px;
+}

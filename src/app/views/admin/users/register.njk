@@ -1,0 +1,32 @@
+{% extends "layout-admin.njk" %}
+
+{% block head %}
+    <title>Criando Usuário - Foodfy</title>
+{% endblock %}
+
+{% block content %}
+    <section class="users edit-container">
+        <div class="cancel">
+            <a href="/admin/users" type="cancel" class="button btn btn-cancel">Cancelar</a>
+        </div>
+
+        <form method="POST" action="/admin/users/register">
+            <div class="header-edit">
+                <span>Criando Usuário</span>
+                <div class="buttons">
+                    <button type="submit" class="button btn">Salvar</button>
+                </div>          
+            </div>
+            
+            <div class="fields">
+                {% include 'admin/users/fields.njk' %}
+            </div>
+
+            <div class="isAdmin">
+                <input type="checkbox" name="isAdmin">
+                <p>Administrador</p>
+            </div>
+                 
+        </form>
+    </section>
+{% endblock %}

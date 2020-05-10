@@ -1,0 +1,21 @@
+{% extends "layout-login.njk" %}
+
+{% block head %}
+    <title>Foodfy</title>
+{% endblock %}
+
+{% block content %}
+    <section id="login">
+        <h1>Iniciar Sessão</h1>
+
+        <div class="fields">
+            <form action="/login" method="POST">
+                {% include 'session/fields.njk' %}
+                <div class="buttons">
+                    <a href="/forgot-password">Perdeu a senha?</a>
+                    <button class="button">Acessar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

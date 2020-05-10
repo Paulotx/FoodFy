@@ -1,0 +1,36 @@
+{% extends "layout-admin.njk" %}
+
+{% block head %}
+    <title>Detalhes Users - Foodfy</title>
+{% endblock %}
+
+{% block content %}
+    <section class="users edit-container">
+        <form id="form-delete" action="/admin/users?_method=DELETE" method="POST">
+            <input type="hidden" name="id" value="{{ user.id }}">
+            <a href="/admin/users" class="button button-delete">Cancelar</a>
+        </form>
+
+        <form method="POST" action="/admin/users?_method=PUT">
+            <div class="header-edit">
+                <span>Bem vindo, {{ user.name }}</span>
+                <div>
+                    <button type="submit" class="button button-edit">Salvar</button>
+                </div>
+            </div>
+        
+            <div class="fields">
+                {% include 'admin/users/fields.njk' %}
+            </div>
+            
+            {% if user.is_admin == true %}
+                <div class="isAdmin">
+                    <input type="checkbox" name="isAdmin" {% if user.is_admin == true %} checked {% endif %}>
+                    <p>Administrador</p>
+                </div>
+            {% endif %}
+            
+            <input type="hidden" name="id" value="{{ user.id }}">
+        </form>
+    </section>
+{% endblock %}
