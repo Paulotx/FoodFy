@@ -91,7 +91,7 @@ module.exports = {
 
         recipes = await Promise.all(recipesPromise);
 
-        if(req._parsedOriginalUrl.path == `/chefs`)
+        if(req._parsedOriginalUrl.path == `/chefs/${ req.params.id }`)
             return res.render("site/chef", { chef, recipes }); 
         
         return res.render("admin/chefs/chef", { chef, recipes });        

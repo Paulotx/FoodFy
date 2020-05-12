@@ -47,7 +47,7 @@ module.exports = {
 
             recipes = await Promise.all(recipes);
 
-            if(req._parsedOriginalUrl.path == "/recipes") {
+            if(req._parsedOriginalUrl.path == "/recipes" || req._parsedOriginalUrl.path == `/recipes?filter=${ filter }` || req._parsedOriginalUrl.path == `/recipes?page=${ page }` || req._parsedOriginalUrl.path == `/recipes?page=${ page }&filter=${ filter }`) {
                 if(recipes.length > 0){
                     return res.render("site/recipes", { recipes, pagination, filter });
                 }                
