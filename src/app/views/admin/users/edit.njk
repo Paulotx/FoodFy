@@ -22,17 +22,6 @@
             <div class="fields">
                 {% include 'admin/users/fields.njk' %}
             </div>
-
-            <div class="item password">
-                <div>Senha</div>
-                <div>
-                    <input 
-                        type="password"
-                        name="password"
-                        placeholder="Informe a senha para alterar os dado"
-                    >
-                </div>
-            </div>
             
             <div class="isAdmin">
                 <input type="checkbox" name="isAdmin" {% if user.is_admin == true %} checked {% endif %}>

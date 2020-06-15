@@ -53,9 +53,9 @@ async function update(req, res, next) {
         return res.render(`admin/users/edit`, fillAllFields);
     }
 
-    const { email, password } = req.body;
+    const { id, email, password } = req.body;
 
-    const user   = await User. findOne({ where: { email }});
+    const user   = await User.findOne({ where: { id }});
     const passed = await compare(password, user.password);
 
     if(!passed) {
@@ -63,6 +63,16 @@ async function update(req, res, next) {
             user: req.body,
             error_login: "Senha incorreta!"
         });
+    }
+
+    next();
+}
+
+async function edit(req, res, next) {
+    const fillAllFields = checkAllFiels(req.body);
+
+    if(fillAllFields) {
+        return res.render(`admin/users/edit`, fillAllFields);
     }
 
     next();
@@ -85,5 +95,6 @@ module.exports = {
     post,
     show,
     update,
+    edit,
     remove
 }

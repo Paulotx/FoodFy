@@ -13,7 +13,7 @@ routes.post("/register", onlyUsers, Validator.post, UserController.post);
 
 routes.get("/", onlyUsers, UserController.index);
 routes.get("/:id", onlyUsers, onlyAdmin.users, Validator.show, UserController.show);
-routes.put("/", onlyUsers, Validator.update, UserController.update);
+routes.put("/", onlyUsers, Validator.edit, UserController.update);
 routes.delete("/", Validator.remove, onlyUsers, onlyAdmin.users, UserController.delete);
 
 module.exports = routes;
