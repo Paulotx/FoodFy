@@ -52,8 +52,7 @@ module.exports = new Pool({
 
 &nbsp;
 #### Instalação
-1. Fazer download ou clone dos arquivos do Projeto
-2. Abrir a pasta do projeto no terminal e executar o comando:
+1. Abrir a pasta do projeto no terminal e executar o comando:
    ```
    npm install
    ```
