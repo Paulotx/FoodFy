@@ -56,3 +56,21 @@ module.exports = new Pool({
    ```
    npm install
    ```
+   
+2. Executar o comando:
+   ```
+   node seed.js
+   ```
+   Para que o banco seja populado
+   
+3. Para startar o projeto: 
+   ```
+   npm start
+   ```
+
+4. Acessar o endereço: http://localhost:3000/login
+
+5. Usuário: user@email.com | Senha: 1111
+
+
+
